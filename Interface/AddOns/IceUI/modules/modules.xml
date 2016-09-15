@@ -1,0 +1,13 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <!-- Init -->
+    <Script file="modules.lua"/>
+
+    <!-- Watcher -->
+    <Include file="watcher\watcher.xml"/>
+
+    <!-- UnitFrames -->
+    <Include file="unitframes\unitframes.xml"/>
+
+    <!-- Tooltips -->
+    <Script file="tooltips\tooltips.lua"/>
+</Ui>

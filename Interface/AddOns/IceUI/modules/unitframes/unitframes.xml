@@ -1,0 +1,6 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Script file="unitframes.lua"/>
+    <Script file="units\player.lua"/>
+    <Script file="units\target.lua"/>
+    <Script file="units\targetoftarget.lua"/>
+</Ui>

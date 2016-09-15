@@ -1,0 +1,15 @@
+## Interface: 70000
+## Title: |cffff8000Ice|r UI
+## Notes: IceUI based on Tukui
+## Authors: Ice
+## Maintainer: Ice
+## SavedVariables: IceUIData
+## SavedVariablesPerCharacter: IceUICharacterData
+## RequiredDeps: Tukui, Tukui_Config
+
+IceUI.lua
+medias\medias.xml
+locales\locales.xml
+config\config.xml
+core\core.xml
+modules\modules.xml

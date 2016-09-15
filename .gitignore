@@ -1,0 +1,7 @@
+#Ignore the followings
+
+#Tukui should be downloaded from official site(http://www.tukui.org/dl.php)
+/Interface/AddOns/Tukui
+/Interface/AddOns/Tukui_Config
+
+
