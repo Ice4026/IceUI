@@ -83,15 +83,22 @@ function Loading:OnEvent(event, addon)
         -- BUFFS
             if (C.Auras.Enable) then
                 T["Auras"]:Enable()
+                T["Auras"]:Expend()
             end
 
         -- Watcher
             I["Watcher"]:Enable()
+        
+        -- Skins
+            I["Skins"]:Enable()
             
         -- Maps
-            T["Maps"]["Minimap"]:Enable()
-            T["Maps"]["Zonemap"]:Enable()
-            T["Maps"]["Worldmap"]:Enable()
+            I["Minimap"]:Enable()
+            I["Worldmap"]:Enable()
+            -- T["Maps"]["Minimap"]:Enable()
+            -- T["Maps"]["Minimap"]:Expend()
+            -- T["Maps"]["Zonemap"]:Enable()
+            -- T["Maps"]["Worldmap"]:Enable()
 
         -- DATATEXTS
             T["DataTexts"]:Enable()

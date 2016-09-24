@@ -6,11 +6,13 @@ T.Scale = function(x) return T.Mult*math.floor(x/T.Mult+.5) end
 
 -- [[ API FUNCTIONS ]] --
 local function SetTemplate(f, t, tex)
-    local balpha = 1
-    if t == "Transparent" then balpha = 0.8 end
+    local backdropa = 1
+    if t == "Transparent" or t == "Border" then
+        backdropa = 0.5
+    end
     local borderr, borderg, borderb = unpack(C.General.BorderColor)
     local backdropr, backdropg, backdropb = unpack(C.General.BackdropColor)
-    local backdropa = balpha
+    
     local texture = C.Medias.Blank
 
     if tex then
@@ -18,14 +20,11 @@ local function SetTemplate(f, t, tex)
     end
 
     local edgeSize = T.Mult
-    if t == "Nonborder" then
-        edgeSize = 0.0001
-    end
 
     f:SetBackdrop({
-      bgFile = texture,
-      edgeFile = C.Medias.Glow,
-      tile = false, tileSize = 0, edgeSize = edgeSize,
+        bgFile = texture,
+        edgeFile = C.Medias.Glow,
+        tile = false, tileSize = 0, edgeSize = edgeSize,
     })
 
     if not f.isInsetDone then
@@ -46,6 +45,54 @@ local function SetTemplate(f, t, tex)
     f:SetBackdropBorderColor(borderr, borderg, borderb)
 end
 
+local function CreateShadow(f, t)
+    if f.Shadow then return end
+
+    local frameLevel = f:GetFrameLevel() > 1 and f:GetFrameLevel() - 1 or 1
+    local backdropr, backdropg, backdropb, backdropa = unpack(IC.Medias.Textures.backdropcolor)
+
+    if t == "Background" then
+        backdropr, backdropg, backdropb, backdropa = unpack(IC.Medias.Textures.backdropfadecolor)
+    else
+        backdropa = 0
+    end
+    
+    local border = CreateFrame("Frame", nil, f)
+    border:SetFrameLevel(frameLevel)
+    border:SetOutside(f, 1, 1)
+    border:SetTemplate("Border")
+    hooksecurefunc(border, "SetFrameLevel", function(self, value)
+        if value > frameLevel + 1 then
+            border:SetFrameLevel(frameLevel)
+        end
+    end)
+    f.Border = f.border or border
+
+    local shadow = CreateFrame("Frame", nil, f)
+    shadow:SetFrameLevel(1)
+    shadow:SetFrameStrata(f:GetFrameStrata())
+    shadow:Point("TOPLEFT", -3, 3)
+    shadow:Point("BOTTOMLEFT", -3, -3)
+    shadow:Point("TOPRIGHT", 3, 3)
+    shadow:Point("BOTTOMRIGHT", 3, -3)
+
+    if C["General"].HideShadows then
+        shadow:SetBackdrop( {
+            edgeFile = nil, edgeSize = 0,
+            insets = {left = 0, right = 0, top = 0, bottom = 0},
+        })
+    else
+        shadow:SetBackdrop( {
+            edgeFile = C.Medias.Glow, edgeSize = T.Scale(3),
+            insets = {left = T.Scale(5), right = T.Scale(5), top = T.Scale(5), bottom = T.Scale(5)},
+        })
+    end
+
+    shadow:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
+    shadow:SetBackdropBorderColor(0, 0, 0, 0.8)
+    f.Shadow = shadow
+end
+
 ---------------------------------------------------
 -- Merge Tukui API with WoW API
 ---------------------------------------------------
@@ -53,6 +100,7 @@ end
 local function AddAPI(object)
     local mt = getmetatable(object).__index
     mt.SetTemplate = SetTemplate
+    mt.CreateShadow = CreateShadow
 end
 
 local Handled = {["Frame"] = true}

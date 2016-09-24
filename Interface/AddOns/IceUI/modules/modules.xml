@@ -5,6 +5,15 @@
     <!-- Watcher -->
     <Include file="watcher\watcher.xml"/>
 
+    <!-- Skins -->
+    <Include file="skins\skins.xml"/>
+
+    <!-- Auras -->
+    <Include file="auras\auras.xml"/>
+
+    <!-- Maps -->
+    <Include file="maps\maps.xml"/>
+
     <!-- UnitFrames -->
     <Include file="unitframes\unitframes.xml"/>
 

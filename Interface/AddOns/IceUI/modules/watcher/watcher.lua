@@ -20,7 +20,7 @@ local BUFF_MIN_ALPHA = 0.2
 -- local WATCHER_FONT = IC["Medias"].Font
 local watcherFont = {
     path = IC.Medias.Fonts.normal,
-    size = 12,
+    size = 16,
     flag = "THINOUTLINE",
 }
 
@@ -73,7 +73,7 @@ end
 
 function watcherPrototype:CreateButton(mode)
     local button=CreateFrame("Button", nil, self.parent)
-    button:CreateShadow("Background")
+    button:CreateShadow()
     button:StyleButton(true)
     button:SetPushedTexture(nil)
     button:SetSize(self.size, self.size)
@@ -104,7 +104,7 @@ function watcherPrototype:CreateButton(mode)
     if mode=="BAR" then
         button.statusbar = CreateFrame("StatusBar", nil, button)
         button.statusbar:SetFrameStrata("BACKGROUND")
-        button.statusbar:CreateShadow("Background")
+        button.statusbar:CreateShadow()
         button.statusbar:SetWidth(self.barwidth - 6)
         button.statusbar:SetHeight(5)
         button.statusbar:SetStatusBarTexture(IC.Medias.Textures.normal)

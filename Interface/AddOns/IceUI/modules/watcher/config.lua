@@ -7,7 +7,7 @@ local positions = {
     target_proc_icon    = { "LEFT", UIParent, "CENTER", 120, -30 },	-- "目标重要buff&debuff"
     focus_buff_icon     = { "BOTTOMLEFT", UIParent, "TOPLEFT", 0, 10 },	-- "焦点buff&debuff"
     cd_icon             = { "BOTTOMLEFT", "TukuiStanceBar", "TOPRIGHT", 5, 20 },	-- "cd"
-    player_special_icon = { "RIGHT", UIParent, "CENTER", -120, -9 }, -- "玩家特殊buff&debuff"
+    player_special_icon = { "RIGHT", UIParent, "CENTER", -120, -80 }, -- "玩家特殊buff&debuff"
     pve_player_icon     = { "BOTTOM", UIParent, "BOTTOM", -35, 350 }, -- "PVE/PVP玩家buff&debuff"
     pve_target_icon     = { "BOTTOM", UIParent, "BOTTOM", 35, 350 }, -- "PVE/PVP目标buff&debuff"
 }
@@ -259,6 +259,8 @@ IC["Watcher"] = {
                 setpoint = positions.player_proc_icon,
                 size = 38,
 
+                --Havoc
+
                 --Demon Soul
                 { spellID = 163073, unitId = "player", caster = "player", filter = "BUFF" },
                 --Metamorphosis
@@ -267,6 +269,8 @@ IC["Watcher"] = {
                 { spellID = 212800, unitId = "player", caster = "player", filter = "BUFF" },
                 --Immolation Aura
                 { spellID = 178740, unitId = "player", caster = "player", filter = "BUFF" },
+                --Momentum
+                { spellID = 208628, unitId = "player", caster = "player", filter = "BUFF" },
 
 
                 --Vengeance
@@ -283,6 +287,10 @@ IC["Watcher"] = {
                 setpoint = positions.target_proc_icon,
                 size = 38,
 
+                 --Havoc
+
+                --Demon Soul
+                { spellID = 207690, unitId = "target", caster = "player", filter = "DEBUFF" },
                 -- { spellID = 202347, unitId = "target", caster = "player", filter = "DEBUFF" },
             },
             {
@@ -305,10 +313,17 @@ IC["Watcher"] = {
                 mode = "BAR",
                 setpoint = positions.cd_icon,
 
+                -- Vengeance
                 --Immolation Aura
                 { spellID = 178740, filter = "CD" },
                 --Metamorphosis
                 { spellID = 187827, filter = "CD" },
+
+                -- Havoc
+                --Metamorphosis
+                { spellID = 191427, filter = "CD" },
+                --Fury of the Illidari
+                { spellID = 201467, filter = "CD" },
 
                 -- 物品
                 -- 手套

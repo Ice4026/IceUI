@@ -2,6 +2,13 @@ local I, IC, L = select(2, ...):unpack()
 local T, C, _, _ = Tukui:unpack()
 local Tooltip = T["Tooltips"]
 
+function Tooltip:ResetAnchor()
+	local Anchor = Tooltip.Anchor
+	local DataTextRight = T["Panels"].DataTextRight
+
+	Anchor:SetPoint("BOTTOMRIGHT", DataTextRight, -25, 150)
+end
+
 function Tooltip:SetUnitAura(...)
 	local caster, _, _, id = select(8, UnitAura(...))
 	if id then
@@ -25,7 +32,7 @@ function Tooltip:OnTooltipSetSpell()
 	local displayString = ("|cFFCA3C3C%s|r %d"):format(ID, id)
 	local lines = self:NumLines()
 	local isFound
-	for i= 1, lines do
+	for i = 1, lines do
 		local line = _G[("GameTooltipTextLeft%d"):format(i)]
 		if line and line:GetText() and line:GetText():find(displayString) then
 			isFound = true;
@@ -40,7 +47,6 @@ function Tooltip:OnTooltipSetSpell()
 	end
 end
 
-
 function Tooltip:Expend()
 	for _, Tooltip in pairs(Tooltip.Tooltips) do
 		if Tooltip == GameTooltip then
@@ -48,4 +54,6 @@ function Tooltip:Expend()
 			hooksecurefunc(GameTooltip, "SetUnitAura", self.SetUnitAura)
 		end
 	end
+
+	self:ResetAnchor()
 end

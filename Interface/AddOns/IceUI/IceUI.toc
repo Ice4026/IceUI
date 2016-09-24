@@ -8,6 +8,7 @@
 ## RequiredDeps: Tukui, Tukui_Config
 
 IceUI.lua
+libs\libs.xml
 medias\medias.xml
 locales\locales.xml
 config\config.xml
