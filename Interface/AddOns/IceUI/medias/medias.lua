@@ -12,13 +12,6 @@ elseif GetLocale() == "zhTW" then
     combat = [[Fonts\bKAI00M.ttf]]
 end
 
-
-C.Medias.Font = normal
-C.Medias.UnitFrameFont = normal
-C.Medias.DamageFont = combat
-C.Medias.PixelFont = [[Interface\AddOns\IceUI\medias\fonts\pixel.ttf]]
-C.Medias.ActionBarFont = normal
-
 --IceUI Medias
 IC["Medias"] = {
     -- Fonts

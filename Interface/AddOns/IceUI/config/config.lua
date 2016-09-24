@@ -1,13 +1,14 @@
 local I, IC, L = select(2, ...):unpack()
-local C
+local T, C = Tukui:unpack()
+-- local C
 local Realm = I["Realm"]
 local Name = I["MyName"]
 
-if (TukuiConfigPerAccount) then
-    C = TukuiConfigShared.Account
-else
-    C = TukuiConfigShared[Realm][Name]
-end
+-- if (TukuiConfigPerAccount) then
+--     C = TukuiConfigShared.Account
+-- else
+--     C = TukuiConfigShared[Realm][Name]
+-- end
 
 C["General"] = {
     ["AutoScale"] = false,
@@ -190,11 +191,11 @@ C["UnitFrames"] = {
 
 C["Medias"] = {
     -- Fonts
-    ["Font"] = [=[Interface\Addons\IceUI\medias\fonts\normal.ttf]=],
-    ["UnitFrameFont"] = [[Interface\Addons\IceUI\medias\fonts\normal.ttf]],
-    ["DamageFont"] = [[Interface\Addons\IceUI\medias\fonts\normal.ttf]],
-    ["PixelFont"] = [=[Interface\Addons\IceUI\medias\fonts\normal.ttf]=],
-    ["ActionBarFont"] = [=[Interface\Addons\IceUI\medias\fonts\normal.ttf]=],
+    ["Font"] = IC.Medias.Fonts.normal,
+    ["UnitFrameFont"] = IC.Medias.Fonts.normal,
+    ["DamageFont"] = IC.Medias.Fonts.combat,
+    ["PixelFont"] = IC.Medias.Fonts.pxfont,
+    ["ActionBarFont"] = IC.Medias.Fonts.normal,
 
     -- Textures
     ["Normal"] = [[Interface\AddOns\IceUI\Medias\textures\statusbar]],

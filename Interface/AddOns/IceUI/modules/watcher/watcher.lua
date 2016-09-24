@@ -20,7 +20,7 @@ local BUFF_MIN_ALPHA = 0.2
 -- local WATCHER_FONT = IC["Medias"].Font
 local watcherFont = {
     path = IC.Medias.Fonts.normal,
-    size = 16,
+    size = 12,
     flag = "THINOUTLINE",
 }
 
