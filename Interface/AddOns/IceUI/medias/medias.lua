@@ -1,20 +1,32 @@
 local I, IC, L = select(2, ...):unpack()
 local T, C = Tukui:unpack()
 
-C.Medias.Font = [=[Interface\Addons\IceUI\medias\fonts\normal_font.ttf]=]
-C.Medias.UnitFrameFont = [[Interface\AddOns\IceUI\medias\fonts\uf_font.ttf]]
-C.Medias.DamageFont = [[Interface\AddOns\IceUI\medias\fonts\combat_font.ttf]]
-C.Medias.PixelFont = [=[Interface\Addons\IceUI\medias\fonts\pixel_font.ttf]=]
-C.Medias.ActionBarFont = [=[Interface\Addons\IceUI\medias\fonts\actionbar_font.ttf]=]
+local normal = [[Fonts\skurri.ttf]]
+local combat = [[Fonts\skurri.ttf]]
+
+if GetLocale() == "zhCN" then
+    normal = [[Fonts\ARKai_T.ttf]]
+    combat = [[Fonts\ARKai_C.ttf]]
+elseif GetLocale() == "zhTW" then
+    normal = [[Fonts\bLEI00D.ttf]]
+    combat = [[Fonts\bKAI00M.ttf]]
+end
+
+
+C.Medias.Font = normal
+C.Medias.UnitFrameFont = normal
+C.Medias.DamageFont = combat
+C.Medias.PixelFont = [[Interface\AddOns\IceUI\medias\fonts\pixel.ttf]]
+C.Medias.ActionBarFont = normal
 
 --IceUI Medias
 IC["Medias"] = {
     -- Fonts
     ["Fonts"] = {
-        normal = [=[Interface\Addons\IceUI\medias\fonts\normal_font.ttf]=],
-        dmgfont = [=[Interface\Addons\IceUI\medias\fonts\normal_font.ttf]=],
-        pxfont = [=[Interface\Addons\IceUI\medias\fonts\normal_font.ttf]=],
-        cdfont = [=[Interface\Addons\IceUI\medias\fonts\normal_font.ttf]=],
+        normal = normal,
+        dmgfont = combat,
+        pxfont = [[Interface\AddOns\IceUI\medias\fonts\pixel.ttf]],
+        cdfont = [[Interface\AddOns\IceUI\medias\fonts\ROADWAY.ttf]],
         fontsize = 12,
         fontflag = "THINOUTLINE",
     },
